@@ -1,5 +1,7 @@
 package com.example.admin.firstdaytest;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -13,9 +15,25 @@ public class CodingTest {
         int[] array = new int[20];
 
         fillArray(array);
+        System.out.println("=============PART 1===============");
         printArray(array);
         System.out.println("====================================");
         FizzBuzz(array);
+        System.out.println("=============END PART 1===============");
+
+
+        System.out.println("=============PART 2===============");
+        ArrayList<String> stringArrayList = new ArrayList<>();
+        stringArrayList.add("A");
+        stringArrayList.add("B");
+        stringArrayList.add("A");
+        stringArrayList.add("C");
+        stringArrayList.add("D");
+        stringArrayList.add("B");
+        stringArrayList.add("E");
+
+        PrintDuplicates(stringArrayList);
+        System.out.println("=============END PART 2===============");
     }
 
     private static void printArray(int[] array) {
@@ -44,6 +62,25 @@ public class CodingTest {
                 System.out.println(array[i]);
             }
 
+        }
+    }
+
+    private static void PrintDuplicates(ArrayList<String> stringArrayList) {
+
+        HashMap<String, Integer> dupes = new HashMap();
+
+        for(int i = 0; i < stringArrayList.size(); i++) {
+
+            if(!dupes.containsKey(stringArrayList.get(i))) {
+                dupes.put(stringArrayList.get(i), 1);
+            }else {
+                dupes.put(stringArrayList.get(i), dupes.get(stringArrayList.get(i)) + 1);
+            }
+        }
+
+        for(String key: dupes.keySet()) {
+            if(dupes.get(key) > 1)
+                System.out.println(key);
         }
     }
 }
